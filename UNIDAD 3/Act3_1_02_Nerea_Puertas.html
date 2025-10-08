@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function multiplo() {
+            let opcion="si";
+
+            do{
+                let numero = prompt("Ingrese un numero");
+                if (numero%3==0){
+                    alert("El numero es multiplo de 3");
+                }else{
+                    alert("El numero no es multiplo de 3");
+                }
+                opcion= prompt("¿Quieres volver a ver los numeros (si/no)?");
+            }while (opcion.toLowerCase()=="si")
+        }
+        multiplo();
+        document.write("Programa finalizado");
+    </script>
+</body>
+</html>
