@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="ejemplo">Ejemplo de prueba</p>
+    <script>
+        const elemento = document.getElementById("ejemplo");
+        console.log(elemento);
+        let valor = elemento.attributes.getNamedItem("id").nodeValue;
+        console.log(valor);
+        elemento.setAttribute("id", "cambio");
+        console.log(elemento);
+        elemento.attributes.getNamedItem("id").nodeValue = "cambio2";
+        console.log(elemento);
+
+    </script>
+</body>
+</html>
