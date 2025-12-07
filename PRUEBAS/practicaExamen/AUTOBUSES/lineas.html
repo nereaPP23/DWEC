@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de lineas</title>
+</head>
+<body>
+    <h1>Gestion de lineas</h1>
+    <label for="numLinea">Nº de linea: </label>
+    <input type="number" id="numLinea" placeholder="numLinea">
+    <label for="origen">Origen: </label>
+    <input type="text" id="origen" placeholder="origen">
+    <label for="destino">Destino: </label>
+    <input type="text" id="destino" placeholder="destino">
+    <label for="horaSalida">Hora salida (HH:MM): </label>
+    <input type="time" id="horaSalida" placeholder="horaSalida">
+    <label for="intervalo">Intervalo (HH:MM): </label>
+    <input type="time" id="intervalo" placeholder="intervalo">
+    <button id="btnAddLinea">Añadir</button>
+    <button id="btnEliminarLinea">Eliminar</button>
+    <button id="btnModifyLinea">Modificar</button>
+    <h2>Lista de lineas</h2>
+    <table id="tablaLineas" border="1">
+        <thead>
+            <tr>
+                <th>Numero linea</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Hora salida</th>
+                <th>Intervalo</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+
+        <script src="js.js"></script>
+</body>
+</html>
