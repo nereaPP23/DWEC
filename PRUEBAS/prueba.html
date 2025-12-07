@@ -1,13 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<html><head><title>Documento</title></head>
 <body>
-    <script type="module" src="unidad3.js"></script>
-       
-    </script>
+<select></select>
+<button>Añadir nota</button><br />
+<textarea style="width: 100%"></textarea>
+<script>
+// Representa el desplegable de los títulos
+const cbTitulos = document.querySelector("select");
+// Representa el cuadro de texto de la nota
+const txtNota = document.querySelector("textarea");
+let estado;
+/* Esta función recoge un nuevo objeto estado y lo ajusta a los controles.
+El objeto consta de dos propiedades:
+- notas: Map que contiene las notas en forma de clave/valor
+- seleccionada: Nota seleccionada dada por su clave
+*/
+function setEstado(nuevoEstado) {
+cbTitulos.textContent = "";
+for (let nombre of Object.keys(nuevoEstado.notas)) {
+const opcion = document.createElement("option");
+opcion.textContent = nombre;
+if (nuevoEstado.seleccionada == nombre) opcion.selected = true;
+cbTitulos.appendChild(opcion);
+} t
+xtNota.value = nuevoEstado.notas[nuevoEstado.seleccionada];
+localStorage.setItem("Notas", JSON.stringify(nuevoEstado));
+estado = nuevoEstado;
+}
+/* Se evalúa si hay algo en el almacenamiento local y en caso
+contrario, se añade una primera nota de base*/
+setEstado(JSON.parse(localStorage.getItem("Notas")) || {
+notas: { "Lista de la compra": "Zanahorias\nTomates" },
+seleccionada: "Lista de la compra",}
+);
+// Al cambiar el ítem del desplegable, se cargan los valores
+cbTitulos.addEventListener("change", () => {
+setEstado({ notas: estado.notas, seleccionada: cbTitulos.value });
+});
+// Cuando se modifica el cuadro de texto de la nota, se va guardando el estado
+txtNota.addEventListener("change", () => {
+setEstado({
+notas: Object.assign({}, estado.notas, {
+[estado.seleccionada]: txtNota.value,
+}), seleccionada: estado.seleccionada,
+});
+});
+// Al pulsar añadir, se inserta una nueva nota
+document.querySelector("button").addEventListener("click", () => {
+let nombre = prompt("Nombre de nota");
+if (nombre)
+setEstado({
+notas: Object.assign({}, estado.notas, { [nombre]: "" }),
+seleccionada: nombre,
+});
+});
+</script>
 </body>
 </html>
